@@ -26,7 +26,13 @@ def BFS(graph, s):
         graph.draw('{}'.format(step))
 
         raise NotImplementedError('Реализуйте алгоритм здесь')
-
+        for w in graph.adj[v]:
+            if graph.attributes[w]['color'] == 'white':
+                q.append(w)
+                graph.attributes[w]['d'] = int(graph.attributes[v]['d'])+1
+                graph.attributes[w]['pi']=v
+                graph.attributes[w]['color'] = 'gray'
+    graph.attributes[v]['color'] = 'black'
 
 def main():
     g = MyGraph()
